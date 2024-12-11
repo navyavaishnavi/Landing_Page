@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .header {
+            background-color: #0078D7;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            margin: 10px 0 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: white;
+            color: #0078D7;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #005bb5;
+            color: white;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .feature {
+            flex: 1 1 300px;
+            max-width: 300px;
+            margin: 15px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .feature h3 {
+            margin-top: 0;
+            color: #0078D7;
+        }
+
+        .feature p {
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: #0078D7;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .modal-content h3 {
+            color: #0078D7;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .modal-content ul {
+            list-style-type: disc;
+            text-align: left;
+            margin: 10px 0 20px 20px;
+            padding: 0;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .modal-content ul li {
+            margin-bottom: 8px;
+        }
+
+        .close-button {
+            background-color: #0078D7;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .close-button:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Resume Building Made Easy</h1>
+        <p>Your first step towards career success starts here.</p>
+        <a href="#" class="cta-button" id="getStartedButton">Get Started</a>
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <h3>Step-by-Step Guidance</h3>
+            <p>We guide you through each section of your resume to ensure it stands out.</p>
+        </div>
+        <div class="feature">
+            <h3>Modern Templates</h3>
+            <p>Choose from a variety of professional designs tailored for different industries.</p>
+        </div>
+        <div class="feature">
+            <h3>AI-Powered Suggestions</h3>
+            <p>Get real-time recommendations for phrasing and formatting to impress recruiters.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h2>Welcome to Resume Builder!</h2>
+            <p>Let us guide you to create a professional resume in just a few steps.</p>
+            <h3>Do's</h3>
+            <ul>
+                <li>Use a professional and clean format.</li>
+                <li>Highlight your key skills and achievements.</li>
+                <li>Tailor your resume for each job application.</li>
+                <li>Proofread for spelling and grammar errors.</li>
+                <li>Keep it concise—1 to 2 pages is ideal.</li>
+            </ul>
+            <h3>Don'ts</h3>
+            <ul>
+                <li>Avoid using overly fancy fonts or colors.</li>
+                <li>Do not include irrelevant personal information.</li>
+                <li>Avoid long paragraphs—use bullet points instead.</li>
+                <li>Don’t exaggerate your experience or skills.</li>
+                <li>Do not use generic objective statements.</li>
+            </ul>
+            <button class="close-button" id="closeButton">Close</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Resume Helper. All rights reserved. | <a href="#">Privacy Policy</a></p>
+    </div>
+
+    <script>
+        const getStartedButton = document.getElementById('getStartedButton');
+        const modal = document.getElementById('modal');
+        const closeButton = document.getElementById('closeButton');
+
+        getStartedButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'flex';
+        });
+
+        closeButton.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
